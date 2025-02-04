@@ -1,0 +1,123 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Draggable : MonoBehaviour
+{
+    public int uses = 1;
+
+    public bool hideAfter = false;
+
+    public GameObject puzzleRef;
+
+    public AudioSource[] soundEffects;
+
+    private SpriteRenderer sr;
+    private Animation anim;
+
+    private GameObject currentShadow = null;
+
+    private Vector3 mousePositionOffset;
+    private Vector3 initialPosition;
+    private float cameraHeight, cameraWidth;
+    private bool outOfBoundsX, outOfBoundsY = false;
+
+    private bool locked = false;
+    private int currentUses = 0;
+
+
+    void Awake()
+    {
+        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animation>();
+    }
+
+
+    void Start()
+    {
+        locked = false;
+        initialPosition = transform.position;
+
+        cameraHeight = 2f * Camera.main.orthographicSize;
+        cameraWidth = cameraHeight * Camera.main.aspect;
+
+        anim.Play();
+    }
+
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+
+    private void OnMouseDown()
+    {
+        if (!locked)
+        {
+            mousePositionOffset = gameObject.transform.position - GetMouseWorldPosition();
+            soundEffects[0].Play();
+            anim.Stop();
+        }  
+    }
+
+
+    private void OnMouseDrag()
+    {
+        if (!locked)
+        {
+            transform.position = GetMouseWorldPosition() + mousePositionOffset;
+        }
+    }
+
+
+    private void OnMouseUp()
+    {
+        if (!locked)
+        {
+            if (currentShadow != null)
+            {
+                transform.localScale = Vector3.one;
+                transform.position = currentShadow.transform.position;
+
+                currentShadow.SetActive(false);
+
+                soundEffects[1].Play();
+
+                currentUses += 1;
+
+                if (currentUses >= uses)
+                {
+                    locked = true;
+                    anim.Stop();
+                    if (hideAfter) sr.color = Color.clear;
+                }
+
+                puzzleRef.GetComponent<Puzzle>().checkInteractions();
+            }
+
+            else
+            {
+                anim.Play();
+            }
+        }
+    }
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (gameObject.tag == col.gameObject.tag && col.gameObject.GetComponent<Draggable>() == null)
+        {
+            currentShadow = col.gameObject;
+        }
+    }
+
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (gameObject.tag == col.gameObject.tag && col.gameObject.GetComponent<Draggable>() == null)
+        {
+            currentShadow = null;
+        }
+    }
+}
