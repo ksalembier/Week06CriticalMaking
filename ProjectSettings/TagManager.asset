@@ -14,6 +14,12 @@ TagManager:
   - Draggable8
   - Draggable9
   - Draggable10
+  - Draggable11
+  - Draggable12
+  - Draggable13
+  - Draggable14
+  - Draggable15
+  - Draggable16
   layers:
   - Default
   - TransparentFX
