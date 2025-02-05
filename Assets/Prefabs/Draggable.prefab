@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uses: 1
-  hideAfter: 0
-  gameController: {fileID: 0}
+  hideAfter: 1
+  puzzleRef: {fileID: 0}
   soundEffects:
   - {fileID: 2857791799898235731}
   - {fileID: 2177235101207696993}

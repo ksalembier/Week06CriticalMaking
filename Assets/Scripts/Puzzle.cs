@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Puzzle : MonoBehaviour
 {
-    public int pieces = 0;
-    public Animation colorAnimation;
+    public GameObject[] pieces;
+    public GameObject colorResult;
     public AudioSource dingSound;
     private int currentInteractions = 0;
 
@@ -22,9 +22,11 @@ public class Puzzle : MonoBehaviour
     {
         currentInteractions += 1;
 
-        if (currentInteractions == pieces)
+        if (currentInteractions == pieces.Length)
         {
-            colorAnimation.Play();
+            foreach (GameObject p in pieces) p.SetActive(false);
+            colorResult.SetActive(true);
+            colorResult.GetComponent<Animation>().Play();
             dingSound.Play();
         }
     }

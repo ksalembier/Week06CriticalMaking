@@ -6,8 +6,6 @@ public class Draggable : MonoBehaviour
 {
     public int uses = 1;
 
-    public bool hideAfter = false;
-
     public GameObject puzzleRef;
 
     public AudioSource[] soundEffects;
@@ -58,6 +56,7 @@ public class Draggable : MonoBehaviour
             mousePositionOffset = gameObject.transform.position - GetMouseWorldPosition();
             soundEffects[0].Play();
             anim.Stop();
+            transform.localScale = Vector3.one;
         }  
     }
 
@@ -90,7 +89,6 @@ public class Draggable : MonoBehaviour
                 {
                     locked = true;
                     anim.Stop();
-                    if (hideAfter) sr.color = Color.clear;
                 }
 
                 puzzleRef.GetComponent<Puzzle>().checkInteractions();
@@ -99,6 +97,14 @@ public class Draggable : MonoBehaviour
             else
             {
                 anim.Play();
+            }
+
+            outOfBoundsX = transform.position.x > (cameraWidth / 2) || transform.position.x < -(cameraWidth / 2);
+            outOfBoundsY = transform.position.y > (cameraHeight / 2) || transform.position.y < -(cameraHeight / 2);
+
+            if (outOfBoundsX || outOfBoundsY)
+            {
+                transform.position = initialPosition;
             }
         }
     }
