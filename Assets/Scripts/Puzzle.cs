@@ -24,10 +24,13 @@ public class Puzzle : MonoBehaviour
 
         if (currentInteractions == pieces.Length)
         {
-            foreach (GameObject p in pieces) p.SetActive(false);
             colorResult.SetActive(true);
             colorResult.GetComponent<Animation>().Play();
+
+            GameObject.Find("GameController").GetComponent<GameController>().updateInteractions();
             dingSound.Play();
+
+            gameObject.SetActive(false);
         }
     }
 }

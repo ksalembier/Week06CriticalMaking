@@ -8,8 +8,9 @@ public class Cinematic : MonoBehaviour
 {
     public Animator anim;
     public VideoPlayer vp;
+    public AudioSource aud;
 
-    
+
     void Start()
     {
         vp.prepareCompleted += OnPrepareCompleted;
@@ -26,6 +27,7 @@ public class Cinematic : MonoBehaviour
     void PlayVideo()
     {
         vp.Play();
+        aud.Play();
         anim.Play("FadeOut");
     }
 

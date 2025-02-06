@@ -33,6 +33,7 @@ public class Interactable : MonoBehaviour
     {
         if (!locked)
         {
+            locked = true;
             soundEffect.Play();
             anim.Stop();
             transform.localScale = Vector3.one;
