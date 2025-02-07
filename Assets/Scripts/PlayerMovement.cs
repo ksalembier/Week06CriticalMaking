@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public AudioSource footsteps;
+    
     [SerializeField] private float moveSpeed = 5f;
     private Vector2 movement;
     private Rigidbody2D rb; 
@@ -27,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
         if (movement != Vector2.zero)
         {
             animator.SetFloat(lastHorizontal, movement.x);
+            if (!footsteps.isPlaying) footsteps.Play();
+        }
+
+        else
+        {
+            footsteps.Stop();
         }
     }
 }
