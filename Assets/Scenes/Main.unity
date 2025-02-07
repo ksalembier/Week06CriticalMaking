@@ -274,7 +274,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16419089}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0b65795688bb26142947d4cf7280a9ce, type: 3}
@@ -1915,11 +1915,11 @@ PrefabInstance:
       objectReference: {fileID: 206872716}
     - target: {fileID: 6164942815826367540, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164942815826367540, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6814016170012718001, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_Size.x
@@ -5746,11 +5746,11 @@ PrefabInstance:
       objectReference: {fileID: 206872716}
     - target: {fileID: 6164942815826367540, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164942815826367540, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6814016170012718001, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_Size.x
@@ -6464,11 +6464,11 @@ PrefabInstance:
       objectReference: {fileID: 206872716}
     - target: {fileID: 6164942815826367540, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164942815826367540, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6814016170012718001, guid: baf9721249b744748bba177ee0ab9c58, type: 3}
       propertyPath: m_Size.x
