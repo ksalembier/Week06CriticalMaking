@@ -10,13 +10,10 @@ public class Puzzle : MonoBehaviour
     public AudioSource dingSound;
     private int currentInteractions = 0;
 
-
-
     void Start()
     {
         currentInteractions = 0;
     }
-
 
     public void checkInteractions()
     {

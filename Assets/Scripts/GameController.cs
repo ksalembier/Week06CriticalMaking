@@ -12,9 +12,13 @@ public class GameController : MonoBehaviour
     private int currentInteractions = 0;
     private Animator anim;
 
+    public GameObject windObjects;
+    private Wind wind;
+
     void Awake()
     {
         anim = Transition.GetComponent<Animator>();
+        wind = windObjects.GetComponent<Wind>();
     }
 
     void Start()
@@ -32,11 +36,28 @@ public class GameController : MonoBehaviour
     {
         currentInteractions += 1;
 
+        if (currentInteractions == 1)
+        {
+            wind.SetBoundaryInactive(1);
+            wind.SetWindActive(2);
+        }
+
+        if (currentInteractions == 2)
+        {
+            wind.SetBoundaryInactive(2);
+            wind.SetWindActive(3);
+        }
+
         if (currentInteractions == interactionsNeeded)
         {
             Transition.SetActive(true);
             Invoke("FadeIn", 5f);
         }
+    }
+
+    public int GetCurrentInteractions()
+    {
+        return currentInteractions;
     }
 
     void FadeIn()

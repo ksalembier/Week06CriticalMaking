@@ -99,10 +99,10 @@ public class Draggable : MonoBehaviour
                 anim.Play();
             }
 
-            outOfBoundsX = transform.position.x > (cameraWidth / 2) || transform.position.x < -(cameraWidth / 2);
+            //outOfBoundsX = transform.position.x > (cameraWidth / 2) || transform.position.x < -(cameraWidth / 2);
             outOfBoundsY = transform.position.y > (cameraHeight / 2) || transform.position.y < -(cameraHeight / 2);
 
-            if (outOfBoundsX || outOfBoundsY)
+            if (outOfBoundsY)
             {
                 transform.position = initialPosition;
             }
