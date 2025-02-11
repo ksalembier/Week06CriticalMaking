@@ -57,6 +57,7 @@ public class Draggable : MonoBehaviour
             soundEffects[0].Play();
             anim.Stop();
             transform.localScale = Vector3.one;
+            transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Player";
         }  
     }
 
@@ -106,6 +107,8 @@ public class Draggable : MonoBehaviour
             {
                 transform.position = initialPosition;
             }
+
+            transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Default";
         }
     }
 
