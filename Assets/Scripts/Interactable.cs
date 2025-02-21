@@ -17,6 +17,7 @@ public class Interactable : MonoBehaviour
     private GameController controller;
     public GameObject windObjects;
     private Wind wind;
+    public Animation outline;
 
     void Awake()
     {
@@ -40,6 +41,7 @@ public class Interactable : MonoBehaviour
             locked = true;
             soundEffect.Play();
             anim.Stop();
+            outline.Play();
             transform.localScale = Vector3.one;
             puzzleRef.SetActive(true);
             int currentInteractions = controller.GetCurrentInteractions();

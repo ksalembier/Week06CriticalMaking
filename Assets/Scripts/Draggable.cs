@@ -57,7 +57,7 @@ public class Draggable : MonoBehaviour
             soundEffects[0].Play();
             anim.Stop();
             transform.localScale = Vector3.one;
-            transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Player";
+            transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Grabbed";
         }  
     }
 
@@ -80,6 +80,9 @@ public class Draggable : MonoBehaviour
                 transform.localScale = Vector3.one;
                 transform.position = currentShadow.transform.position;
 
+                transform.GetChild(0).GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+                transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Locked";
+
                 currentShadow.SetActive(false);
 
                 soundEffects[1].Play();
@@ -97,6 +100,8 @@ public class Draggable : MonoBehaviour
 
             else
             {
+                transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Available";
+
                 anim.Play();
             }
 
@@ -107,8 +112,6 @@ public class Draggable : MonoBehaviour
             {
                 transform.position = initialPosition;
             }
-
-            transform.GetChild(0).GetComponent<Renderer>().sortingLayerName = "Default";
         }
     }
 
